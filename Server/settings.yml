@@ -1,0 +1,54 @@
+portal_settings:
+  allowed_hosts:
+    - '*'
+  debug: true
+  secret_key: PUFFER_PORTAL_SECRET_KEY
+postgres_connection:
+  host: 127.0.0.1
+  port: 5432
+  dbname: puffer
+  user: puffer
+  password: PUFFER_PORTAL_DB_KEY
+ws_base_port: 50000
+experiments:
+- num_servers: 1
+  fingerprint:
+    abr: mpc_proactive_sim
+    abr_config:
+      rebuffer_length_coeff: 20
+      ssim_diff_coeff: 1
+      max_lookahead_horizon: 5
+      max_power_lookahead_horizon: 5
+      max_power_budget: 450
+      video_streaming_mode: 1
+      enable_output_debug: 0
+      track_reduction: 1
+      log_dir: /home/meng72/Puffer_power/src/monitoring
+    cc: bbr
+enable_logging: true
+log_dir: /home/meng72/Puffer_power/src/monitoring
+influxdb_connection:
+  host: 127.0.0.1
+  port: 8086
+  dbname: puffer
+  user: puffer
+  password: INFLUXDB_PASSWORD
+media_dir: /home/meng72/puffer_videos/media-360
+enforce_moving_live_edge: false
+channels:
+  - cbs
+channel_configs:
+  cbs:
+    live: true
+    video:
+      3840x2160: [0]
+      2560x1440: [0]
+      1920x1080: [0]
+      1280x720: [0]
+      854x480: [0]
+      640x360: [0]
+      426x240: [0]
+      256x144: [0]
+    audio:
+      - 50k
+    present_delay_chunk: 147
